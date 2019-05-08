@@ -86,15 +86,16 @@ public://公共方法
 };
 int main(){
 	Stack_1 s1;
-	cout<<s1.ifEmpty()<<endl;
+	cout<<"if empty:"<<s1.ifEmpty()<<endl;
 	//
 	Stack_2 s2;
 	s2.push('z');
 	s2.push('x');
 	s2.push('c');
+	cout<<"if empty:"<<s2.ifEmpty()<<endl;
 	cout<<s2.pop()<<endl;
 	cout<<s2.pop()<<endl;
 	cout<<s2.pop()<<endl;
-	cout<<s2.pop()<<endl;
+	cout<<"if empty:"<<s2.ifEmpty()<<endl;
 	return 0;
 }

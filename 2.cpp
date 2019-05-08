@@ -130,11 +130,8 @@ void List::print(){//输出链表数据的函数
 //以下是主函数，为链表的各种操作
 int main(){
 	List l;
-	l.print();
 	l.insert('q');
-	l.print();
 	l.insert2('w',1);
-	l.print();
 	l.insert2('e',1);
 	l.print();
 	l.Delete(3);

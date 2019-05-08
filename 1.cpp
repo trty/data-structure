@@ -1,7 +1,8 @@
 ﻿#include "iostream"  //导入头文件
 using namespace std;  //标准输出
 const int maxsize = 100; //定义最大数据
-typedef char DataType; //定义Datetype为char类型
+//typedef char DataType; //定义Datetype为char类型
+typedef int DataType;
 class List { //定义List雷
 	DataType data[maxsize]; //初始化data数组 
 	int size; //初始化size
@@ -29,14 +30,14 @@ void List::insert(DataType d,int n) { //实现了插入函数
 	}
 }
 DataType List::Delete(int n) { //实现删除函数
-	if (n<1 || n>size ||size==0) { //判断参数是否合法
+	if (n<1 || n>size ||size<=0) { //判断参数是否合法
 		cout << "删除位置错误!" << endl;
 		exit(0); //退出
 	}
 	else {
-		DataType d = data[n]; //备份删除的值
-		for (int i = n - 1; n < size - 1; i++) { //循环前移
-			data[i] = data[i + 1];
+		DataType d = data[n-1]; //备份删除的值
+		for (int i = n - 1; i < size - 1; i++) { //循环前移
+			data[i] = data[i+1];
 		}
 		size--; //列表长度减一
 		return d; //返回删除的值
@@ -77,16 +78,52 @@ void List::print() { //实现输出函数
 		}
 		cout << endl;
 	}
-}
+};
+void yuesefu(int sum, int size){
+	List l;
+	for(int i=1;i<=sum;i++){
+		l.insert(i,i);
+	}
+	l.print();
+	int start = 1;
+	cout<<"out:";
+	while(l.Length()>0){
+		start = (start+size-1)%l.Length();
+		cout<<l.Delete(start==0?1:start)<<" ";
+		//l.print();
+	}
+	cout<<endl;
+};
+void work(){
+	char re[100];
+	int sum=0;
+	cout<<"your polynomial:";
+	cin>>re;
+	cout<<re<<endl;
+	for(int i=0;i<100;i++){
+		cout<<re[i];
+		if(re[i]=='='){
+			break;
+		}
+		if(47<re[i]<58){
+			sum = sum*10 + re[i]-48;
+		}
+	}
+	cout<<endl<<('2'-48)*('4'-48)<<endl;
+	cout<<endl;
+};
 int main() { //主函数
 	List l; 
-	l.insert('1',1);
-	l.insert('3', 2);
+	l.insert(1,1);
+	l.insert(2, 2);
+	l.insert(3, 3);
 	l.print();
 	cout << "获取第二个元素:"<<l.GetElem(2) << endl;
-	l.Delete(1);
+	cout<<"Delete:"<<l.Delete(1)<<"$"<<endl;
 	l.print();
 	cout << "判断是否为空:"<<l.ifempty() << endl;
 	l.clear();
 	cout << "判断是否为空:"<<l.ifempty() << endl;
+	yuesefu(100,3);
+	work();	
 }
