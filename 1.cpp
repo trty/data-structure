@@ -125,5 +125,5 @@ int main() { //主函数
 	l.clear();
 	cout << "判断是否为空:"<<l.ifempty() << endl;
 	yuesefu(100,3);
-	work();	
+	work();	return 0;
 }
